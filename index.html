@@ -28,16 +28,21 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
+     
+      padding-top: 80px;  
     }
 
     h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 700; }
 
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      width: 100%;                    
       height: 80px;
       background: rgba(250,248,245,0.97);
       backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); 
       border-bottom: 1px solid rgba(106,141,146,0.15);
       z-index: 1000;
     }
@@ -52,7 +57,11 @@
       justify-content: space-between;
     }
 
-    .logo { font-size: 2.2rem; color: var(--accent-dark); text-decoration: none; }
+    .logo { 
+      font-size: 2.2rem; 
+      color: var(--accent-dark); 
+      text-decoration: none; 
+    }
 
     .nav-links {
       display: flex;
@@ -69,11 +78,39 @@
 
     .nav-links a:hover { color: var(--accent-dark); }
 
+    /* Mobile adjustments */
+    @media (max-width: 900px) {
+      .nav-container {
+        padding: 0 1.2rem;
+      }
+      .nav-links {
+        gap: 1.6rem;
+      }
+      .nav-links a {
+        font-size: 0.98rem;
+      }
+      body {
+        padding-top: 80px; 
+      }
+    }
+
+
+    @supports (padding-top: env(safe-area-inset-top)) {
+      nav {
+        padding-top: env(safe-area-inset-top);
+        height: calc(80px + env(safe-area-inset-top));
+      }
+      body {
+        padding-top: calc(80px + env(safe-area-inset-top));
+      }
+    }
+
+   
     .hero {
       height: 90vh;
       min-height: 620px;
       background: linear-gradient(rgba(47,42,37,0.5), rgba(47,42,37,0.65)),
-                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600') center/cover;
+                  url('https://imgs.search.brave.com/7g__QXg_AfzRq440wdaC04D0jkCkU2a-L68qABBWAHU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNTAv/NTMxLzQzMy9zbWFs/bC93aGl0ZS1jYW5k/bGUtYnVybmluZy13/aXRoLXNvZnQtYmFj/a2dyb3VuZC1mb3It/Y2hyaXN0bWFzLW9y/LWRpd2FsaS1mcmVl/LXBob3RvLmpwZw') center/cover;
       color: white;
       display: flex;
       align-items: center;
@@ -167,7 +204,11 @@
       text-align: center;
     }
 
-    #contact { background: var(--cream); text-align: center; }
+   #contact a {
+  display: inline-block;
+  margin: 0.4rem 0;
+  padding: 0.2rem 0;
+}
 
     footer {
       background: #1f1a16;
@@ -184,9 +225,10 @@
 </head>
 <body>
 
+
 <nav>
   <div class="nav-container">
-    <a href="#" class="logo">🕯️ Ojas Candles</a>
+    <a href="#" class="logo">Sweet Rings</a>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#collection">Collection</a>
@@ -196,10 +238,12 @@
   </div>
 </nav>
 
+
+
 <section class="hero">
   <div class="hero-content">
-    <h1>Handcrafted Serenity</h1>
-    <p>Unique soy candles poured with intention in Lucknow</p>
+    <h1>Handcrafted Candles</h1>
+    <p>Unique soy candles made with passion in Lucknow</p>
     <a href="#collection" class="btn">Explore Collection</a>
   </div>
 </section>
@@ -215,426 +259,486 @@
   </div>
 </section>
 
-<!-- COLLECTION – 35 unique candles with expandable description -->
+
+
+</body>
+</html>
+
+
 <section id="collection" class="container">
   <h2>Our Collection – 35 Scents</h2>
+  
+  <style>
+    /* New styling for the Meesho button inside the card */
+    .buy-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 10px 20px;
+      background-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    .buy-link:hover {
+      background-color: var(--accent-dark);
+    }
+  </style>
+
   <div class="candles-grid">
 
     <div class="candle-card">
-      <img src="https://picsum.photos/id/101/800/1000" alt="">
+      <img src="https://picsum.photos/id/101/800/1000" alt="Lavender Twilight">
       <details class="candle-details">
         <summary>Lavender Twilight</summary>
         <div class="description">
-          Calming French lavender blended with chamomile and a soft vanilla base. Perfect for bedtime rituals and relaxation.
-          Burn time: ~40–45 hours. 200 g soy wax.
+          Calming French lavender blended with chamomile and a soft vanilla base. Perfect for bedtime rituals.
+          <br>Burn time: ~40–45 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹749</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/id/237/800/1000" alt="">
+      <img src="https://picsum.photos/id/237/800/1000" alt="Citrus Sunrise">
       <details class="candle-details">
         <summary>Citrus Sunrise</summary>
         <div class="description">
-          Energizing blend of bergamot, Sicilian lemon and fresh mint. Great for morning boosts or workspaces.
-          Burn time: ~40 hours. 200 g soy wax.
+          Energizing blend of bergamot, Sicilian lemon and fresh mint. Great for morning boosts.
+          <br>Burn time: ~40 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹699</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/id/1069/800/1000" alt="">
+      <img src="https://picsum.photos/id/1069/800/1000" alt="Sandalwood Whisper">
       <details class="candle-details">
         <summary>Sandalwood Whisper</summary>
         <div class="description">
-          Warm Mysore sandalwood with white cedar and golden amber. Deeply grounding and meditative.
-          Burn time: ~45 hours. 200 g soy wax.
+          Warm Mysore sandalwood with white cedar and golden amber. Deeply grounding.
+          <br>Burn time: ~45 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹849</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/id/825/800/1000" alt="">
+      <img src="https://picsum.photos/id/825/800/1000" alt="Madagascar Vanilla">
       <details class="candle-details">
         <summary>Madagascar Vanilla</summary>
         <div class="description">
-          Rich, creamy Madagascar vanilla pods with tonka bean and a hint of caramelized sugar. Ultimate comfort scent.
-          Burn time: ~40 hours. 200 g soy wax.
+          Rich, creamy Madagascar vanilla pods with tonka bean. Ultimate comfort scent.
+          <br>Burn time: ~40 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹729</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/id/163/800/1000" alt="">
+      <img src="https://picsum.photos/id/163/800/1000" alt="Jasmine Nocturne">
       <details class="candle-details">
         <summary>Jasmine Nocturne</summary>
         <div class="description">
-          Intoxicating night-blooming jasmine with ylang-ylang and earthy patchouli undertones. Romantic & sensual.
-          Burn time: ~42 hours. 200 g soy wax.
+          Intoxicating night-blooming jasmine with ylang-ylang. Romantic & sensual.
+          <br>Burn time: ~42 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹769</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=6" alt="">
+      <img src="https://picsum.photos/800/1000?random=6" alt="Ocean Mist">
       <details class="candle-details">
         <summary>Ocean Mist</summary>
         <div class="description">
-          Clean sea salt, sun-bleached driftwood and a touch of blue eucalyptus. Instant coastal calm.
-          Burn time: ~40 hours. 200 g soy wax.
+          Clean sea salt and sun-bleached driftwood. Instant coastal calm.
+          <br>Burn time: ~40 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹799</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=7" alt="">
+      <img src="https://picsum.photos/800/1000?random=7" alt="Damask Rose Velvet">
       <details class="candle-details">
         <summary>Damask Rose Velvet</summary>
         <div class="description">
-          Luxurious Bulgarian Damask rose with geranium and soft pink musk. Elegant and timeless.
-          Burn time: ~45 hours. 200 g soy wax.
+          Luxurious Bulgarian Damask rose with geranium. Elegant and timeless.
+          <br>Burn time: ~45 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹779</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=8" alt="">
+      <img src="https://picsum.photos/800/1000?random=8" alt="Eucalyptus Rain">
       <details class="candle-details">
         <summary>Eucalyptus Rain</summary>
         <div class="description">
-          Crisp eucalyptus, spearmint and fresh rain accord. Clears the mind and airways.
-          Burn time: ~40 hours. 200 g soy wax.
+          Crisp eucalyptus and fresh rain accord. Clears the mind.
+          <br>Burn time: ~40 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹699</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=9" alt="">
+      <img src="https://picsum.photos/800/1000?random=9" alt="Cinnamon Chai Glow">
       <details class="candle-details">
         <summary>Cinnamon Chai Glow</summary>
         <div class="description">
-          Warm cinnamon bark, green cardamom and black tea leaves. Cozy chai-inspired hug.
-          Burn time: ~42 hours. 200 g soy wax.
+          Warm cinnamon bark and green cardamom. Cozy chai-inspired hug.
+          <br>Burn time: ~42 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹719</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=10" alt="">
+      <img src="https://picsum.photos/800/1000?random=10" alt="Kashmiri Saffron Silk">
       <details class="candle-details">
         <summary>Kashmiri Saffron Silk</summary>
         <div class="description">
-          Precious Kashmiri saffron threads with honey and subtle oud wood. Royal and exotic.
-          Burn time: ~45 hours. 200 g soy wax.
+          Precious Kashmiri saffron threads with honey. Royal and exotic.
+          <br>Burn time: ~45 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹899</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=11" alt="">
+      <img src="https://picsum.photos/800/1000?random=11" alt="Black Fig & Honey">
       <details class="candle-details">
         <summary>Black Fig & Honey</summary>
         <div class="description">
-          Juicy black figs, wild forest honey and creamy tonka bean. Rich and indulgent.
-          Burn time: ~40 hours. 200 g soy wax.
+          Juicy black figs and wild forest honey. Rich and indulgent.
+          <br>Burn time: ~40 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹759</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=12" alt="">
+      <img src="https://picsum.photos/800/1000?random=12" alt="Amber Dusk">
       <details class="candle-details">
         <summary>Amber Dusk</summary>
         <div class="description">
-          Warm amber resin, labdanum and vanilla bourbon. Golden-hour comfort in a jar.
-          Burn time: ~45 hours. 200 g soy wax.
+          Warm amber resin and vanilla bourbon. Golden-hour comfort.
+          <br>Burn time: ~45 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹829</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=13" alt="">
+      <img src="https://picsum.photos/800/1000?random=13" alt="Coconut Lime Zest">
       <details class="candle-details">
         <summary>Coconut Lime Zest</summary>
         <div class="description">
-          Creamy coconut, zesty key lime and clean white musk. Tropical vacation vibe.
-          Burn time: ~40 hours. 200 g soy wax.
+          Creamy coconut and zesty key lime. Tropical vacation vibe.
+          <br>Burn time: ~40 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹689</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=14" alt="">
+      <img src="https://picsum.photos/800/1000?random=14" alt="Patchouli Forest">
       <details class="candle-details">
         <summary>Patchouli Forest</summary>
         <div class="description">
-          Deep, earthy patchouli with vetiver and smoked cedar. Forest meditation.
-          Burn time: ~45 hours. 200 g soy wax.
+          Deep, earthy patchouli with vetiver. Forest meditation.
+          <br>Burn time: ~45 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹789</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=15" alt="">
+      <img src="https://picsum.photos/800/1000?random=15" alt="Peony Garden">
       <details class="candle-details">
         <summary>Peony Garden</summary>
         <div class="description">
-          Lush peony petals, rose de mai and delicate freesia. Romantic spring bouquet.
-          Burn time: ~40 hours. 200 g soy wax.
+          Lush peony petals and delicate freesia. Romantic spring bouquet.
+          <br>Burn time: ~40 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹749</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=16" alt="">
+      <img src="https://picsum.photos/800/1000?random=16" alt="Dark Cherry Smoke">
       <details class="candle-details">
         <summary>Dark Cherry Smoke</summary>
         <div class="description">
-          Ripe black cherry, smoked oak and dark cocoa. Mysterious & gourmand.
-          Burn time: ~42 hours. 200 g soy wax.
+          Ripe black cherry and smoked oak. Mysterious & gourmand.
+          <br>Burn time: ~42 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹799</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=17" alt="">
+      <img src="https://picsum.photos/800/1000?random=17" alt="Green Tea Blossom">
       <details class="candle-details">
         <summary>Green Tea Blossom</summary>
         <div class="description">
-          Fresh sencha green tea with jasmine petals and soft white musk. Clean & zen.
-          Burn time: ~40 hours. 200 g soy wax.
+          Fresh sencha green tea with jasmine petals. Clean & zen.
+          <br>Burn time: ~40 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹729</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=18" alt="">
+      <img src="https://picsum.photos/800/1000?random=18" alt="Cardamom Rose">
       <details class="candle-details">
         <summary>Cardamom Rose</summary>
         <div class="description">
-          Green cardamom pods with Turkish rose and a thread of saffron. Spicy-floral luxury.
-          Burn time: ~45 hours. 200 g soy wax.
+          Green cardamom pods with Turkish rose. Spicy-floral luxury.
+          <br>Burn time: ~45 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹779</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=19" alt="">
+      <img src="https://picsum.photos/800/1000?random=19" alt="Lemon Myrtle">
       <details class="candle-details">
         <summary>Lemon Myrtle</summary>
         <div class="description">
-          Bright Australian lemon myrtle, lemongrass and verbena. Uplifting citrus-herbal.
-          Burn time: ~40 hours. 200 g soy wax.
+          Bright Australian lemon myrtle and verbena. Uplifting citrus.
+          <br>Burn time: ~40 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹679</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=20" alt="">
+      <img src="https://picsum.photos/800/1000?random=20" alt="Mint Mojito">
       <details class="candle-details">
         <summary>Mint Mojito</summary>
         <div class="description">
-          Fresh spearmint leaves, lime zest and sugarcane. Refreshing summer cocktail vibe.
-          Burn time: ~40 hours. 200 g soy wax.
+          Fresh spearmint leaves and lime zest. Summer cocktail vibe.
+          <br>Burn time: ~40 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹699</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=21" alt="">
+      <img src="https://picsum.photos/800/1000?random=21" alt="Frankincense & Myrrh">
       <details class="candle-details">
         <summary>Frankincense & Myrrh</summary>
         <div class="description">
-          Sacred frankincense and myrrh with balsamic amber. Spiritual & ancient.
-          Burn time: ~45 hours. 200 g soy wax.
+          Sacred frankincense and myrrh. Spiritual & ancient.
+          <br>Burn time: ~45 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹899</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=22" alt="">
+      <img src="https://picsum.photos/800/1000?random=22" alt="Orange Blossom">
       <details class="candle-details">
         <summary>Orange Blossom</summary>
         <div class="description">
-          Sweet Tunisian orange blossom, neroli and petitgrain. Sunny Mediterranean grove.
-          Burn time: ~40 hours. 200 g soy wax.
+          Sweet Tunisian orange blossom and neroli. Sunny Mediterranean grove.
+          <br>Burn time: ~40 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹729</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=23" alt="">
+      <img src="https://picsum.photos/800/1000?random=23" alt="Cedar & Sage">
       <details class="candle-details">
         <summary>Cedar & Sage</summary>
         <div class="description">
-          Red cedar, white sage and juniper berry. Cleansing & grounding ritual scent.
-          Burn time: ~42 hours. 200 g soy wax.
+          Red cedar and white sage. Cleansing & grounding ritual scent.
+          <br>Burn time: ~42 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹789</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=24" alt="">
+      <img src="https://picsum.photos/800/1000?random=24" alt="Pomegranate Noir">
       <details class="candle-details">
         <summary>Pomegranate Noir</summary>
         <div class="description">
-          Juicy pomegranate, black currant and dark plum. Bold and mysterious.
-          Burn time: ~40 hours. 200 g soy wax.
+          Juicy pomegranate and dark plum. Bold and mysterious.
+          <br>Burn time: ~40 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹749</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=25" alt="">
+      <img src="https://picsum.photos/800/1000?random=25" alt="White Tea & Ginger">
       <details class="candle-details">
         <summary>White Tea & Ginger</summary>
         <div class="description">
-          Silver needle white tea, fresh ginger and bergamot. Clean and invigorating.
-          Burn time: ~40 hours. 200 g soy wax.
+          Silver needle white tea and fresh ginger. Clean and invigorating.
+          <br>Burn time: ~40 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹719</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=26" alt="">
+      <img src="https://picsum.photos/800/1000?random=26" alt="Clove & Tobacco">
       <details class="candle-details">
         <summary>Clove & Tobacco</summary>
         <div class="description">
-          Warm clove bud, sweet pipe tobacco and vanilla leaf. Rich & masculine.
-          Burn time: ~45 hours. 200 g soy wax.
+          Warm clove bud and sweet pipe tobacco. Rich & masculine.
+          <br>Burn time: ~45 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹819</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=27" alt="">
+      <img src="https://picsum.photos/800/1000?random=27" alt="Lily of the Valley">
       <details class="candle-details">
         <summary>Lily of the Valley</summary>
         <div class="description">
-          Delicate lily of the valley, green leaves and jasmine. Fresh spring garden.
-          Burn time: ~40 hours. 200 g soy wax.
+          Delicate lily of the valley and green leaves. Fresh spring garden.
+          <br>Burn time: ~40 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹739</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=28" alt="">
+      <img src="https://picsum.photos/800/1000?random=28" alt="Mango & Coconut">
       <details class="candle-details">
         <summary>Mango & Coconut</summary>
         <div class="description">
-          Juicy Alphonso mango, coconut milk and vanilla. Tropical escape.
-          Burn time: ~42 hours. 200 g soy wax.
+          Juicy Alphonso mango and coconut milk. Tropical escape.
+          <br>Burn time: ~42 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹709</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=29" alt="">
+      <img src="https://picsum.photos/800/1000?random=29" alt="Smoked Oud">
       <details class="candle-details">
         <summary>Smoked Oud</summary>
         <div class="description">
-          Deep smoked oud, leather and frankincense. Intense & luxurious.
-          Burn time: ~45 hours. 200 g soy wax.
+          Deep smoked oud and leather. Intense & luxurious.
+          <br>Burn time: ~45 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
-      <div class="price">₹949</div>
+      <div class="price">₹899</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=30" alt="">
+      <img src="https://picsum.photos/800/1000?random=30" alt="Applewood & Cinnamon">
       <details class="candle-details">
         <summary>Applewood & Cinnamon</summary>
         <div class="description">
-          Smoked applewood, cinnamon stick and clove. Warm autumn fireplace.
-          Burn time: ~40 hours. 200 g soy wax.
+          Smoked applewood and cinnamon stick. Warm autumn fireplace.
+          <br>Burn time: ~40 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹769</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=31" alt="">
+      <img src="https://picsum.photos/800/1000?random=31" alt="Blueberry Lavender">
       <details class="candle-details">
         <summary>Blueberry Lavender</summary>
         <div class="description">
-          Juicy blueberry, English lavender and a touch of honey. Sweet & soothing.
-          Burn time: ~40 hours. 200 g soy wax.
+          Juicy blueberry and English lavender. Sweet & soothing.
+          <br>Burn time: ~40 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹749</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=32" alt="">
+      <img src="https://picsum.photos/800/1000?random=32" alt="Golden Hour">
       <details class="candle-details">
         <summary>Golden Hour</summary>
         <div class="description">
           Sun-warmed amber, honey and bergamot. Golden sunset in a jar.
-          Burn time: ~42 hours. 200 g soy wax.
+          <br>Burn time: ~42 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹799</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=33" alt="">
+      <img src="https://picsum.photos/800/1000?random=33" alt="Midnight Orchid">
       <details class="candle-details">
         <summary>Midnight Orchid</summary>
         <div class="description">
-          Black orchid, vanilla orchid and dark plum. Mysterious & seductive.
-          Burn time: ~45 hours. 200 g soy wax.
+          Black orchid and vanilla orchid. Mysterious & seductive.
+          <br>Burn time: ~45 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹829</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=34" alt="">
+      <img src="https://picsum.photos/800/1000?random=34" alt="Spring Rain">
       <details class="candle-details">
         <summary>Spring Rain</summary>
         <div class="description">
-          Petitgrain, green tea and wet stones. Fresh after-rain clarity.
-          Burn time: ~40 hours. 200 g soy wax.
+          Petitgrain and green tea. Fresh after-rain clarity.
+          <br>Burn time: ~40 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹719</div>
     </div>
 
     <div class="candle-card">
-      <img src="https://picsum.photos/800/1000?random=35" alt="">
+      <img src="https://picsum.photos/800/1000?random=35" alt="Autumn Orchard">
       <details class="candle-details">
         <summary>Autumn Orchard</summary>
         <div class="description">
           Crisp apple, ripe pear and cinnamon spice. Classic fall comfort.
-          Burn time: ~42 hours. 200 g soy wax.
+          <br>Burn time: ~42 hours. 200 g soy wax.
+          <br><a href="https://www.meesho.com/SweetRings?_ms=3.0.3" target="_blank" class="buy-link">Buy on Meesho →</a>
         </div>
       </details>
       <div class="price">₹749</div>
@@ -642,38 +746,28 @@
 
   </div>
 </section>
-
-<!-- SHOP -->
-<section id="shop" class="container">
-  <h2>Shop</h2>
-  <p style="text-align:center; font-size:1.3rem; max-width:700px; margin:0 auto 3rem; color:#5a4f44;">
-    All candles from the collection are available for purchase.<br>
-    Currently taking orders though Meesho.
-  </p>
-  <div style="text-align:center;">
-    <a href="#collection" class="btn" style="margin-right:1.5rem;">View Candles</a>
-    <a href="#contact" class="btn">Contact to Order</a>
-  </div>
-</section>
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="container">
     <h2>Let's Connect</h2>
     <p style="font-size:1.3rem; margin-bottom:2rem;">
-      Questions? Custom orders? Just want to say hi?<br>
+      Questions? Custom orders??<br>
       Reach out anytime.
     </p>
     <p style="font-size:1.4rem;">
-       <strong>Meesho:</strong> <a href="https://www.meesho.com/@ojascandles" style="color:var(--accent-dark);">i'll add it later</a>
-      <strong>Instagram:</strong> <a href="https://www.instagram.com/noopur_raghav_chaudhary/" style="color:var(--accent-dark);">noopur_raghav_chaudhary/</a>
+      <strong>Meesho:</strong> 
+      <a href="https://www.meesho.com/SweetRings?_ms=3.0.3" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         style="color:var(--accent-dark);">SweetRings</a>
+      <br>
+      <strong>Instagram:</strong> 
+      <a href="https://www.instagram.com/noopur_raghav_chaudhary/" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         style="color:var(--accent-dark);">noopur_raghav_chaudhary</a>
     </p>
   </div>
 </section>
-
-<footer>
-  <p>Made with ♡ in Lucknow • © 2026 Candles by Sweet Rings</p>
-</footer>
-
 </body>
 </html>
