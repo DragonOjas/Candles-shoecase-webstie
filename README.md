@@ -1,2 +1,2 @@
-# Candles-shoecase-webstie
-site link https://dragonojas.github.io/Candles-shoecase-webstie/.
+# Candles-showcase-webstie
+ link- https://dragonojas.github.io/Candles-shoecase-webstie/.
